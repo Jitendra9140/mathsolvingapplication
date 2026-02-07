@@ -1,75 +1,75 @@
-import {StyleSheet} from 'react-native';
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-import React, {useEffect, useRef} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import React, { useEffect, useRef } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {AppState} from 'react-native';
-import SignUp from './Component/Screens/SignUp';
-import SkipScreen from './Component/Screens/SkipScreen';
-import BottomTab from './Component/Screens/BottomTab';
-import PlayGame from './Component/Screens/PlayGame';
-import Home from './Component/Screens/Home';
-import MathInputScreen from './Component/Screens/MathInputScreen';
-import GuessTheSignScreen from './Component/Screens/GuessTheSignScreen';
-import MathInputScreenSecond from './Component/Screens/MathInputScreenSecond';
-import MathInputScreenThrid from './Component/Screens/MathInputScreenThrid';
-import WellDoneScreen from './Component/Screens/WellDoneScreen';
-import QuitScreen from './Component/Screens/QuitScreen';
-import RestartScreen from './Component/Screens/RestartScreen';
-import FireworksAnimation from './Component/Screens/FireworksAnimation';
-import Leaderboard from './Component/Screens/Leaderboard';
-import EndlessLeaderboard from './Component/Screens/EndlessLeaderboard';
-import Store from './Component/Screens/Store';
-import Dashboard from './Component/Screens/Dashboard';
-import EmailVerification from './Component/Screens/EmailVerification';
-import OnBoarding from './Component/Screens/OnBoarding';
-import Splash from './Component/Screens/Splash';
-import WaitingForOpponent from './Component/Screens/WaitingForOpponent';
-import GuessTheSign from './Component/Screens/GuessTheSign';
-import ChangeDifficultyScreen from './Component/Screens/ChangeDifficultyScreen';
-import LastScreen from './Component/Screens/LastScreen';
-import MathPuzzleScreen from './Component/Screens/MathPuzzleScreen';
-import DataScreen from './Component/Screens/DataScreen';
-import StateData from './Component/Screens/StateData';
-import Lobby from './Component/Screens/Lobby';
-import MultiPlayerGame from './Component/Screens/MultiPlayerGame';
-import {Socket} from './Context/Socket';
-import CommingSoon from './Component/Screens/CommingSoon';
-import ForgetPassword from './Component/Screens/ForgetPassword';
-import Login from './Component/Screens/Login';
-import More from './Component/Screens/More';
-import AddUserScreen from './Component/Screens/AddUserScreen';
-import {AuthProvider} from './Component/Globalfile/AuthProvider';
-import FriendRequestScreen from './Component/Screens/FriendRequestScreen';
+import { AppState } from 'react-native';
+import SignUp from './src/screens/SignUp';
+import SkipScreen from './src/screens/SkipScreen';
+import BottomTab from './src/screens/BottomTab';
+import PlayGame from './src/screens/PlayGame';
+import Home from './src/screens/Home';
+import MathInputScreen from './src/screens/MathInputScreen';
+import GuessTheSignScreen from './src/screens/GuessTheSignScreen';
+import MathInputScreenSecond from './src/screens/MathInputScreenSecond';
+import MathInputScreenThrid from './src/screens/MathInputScreenThrid';
+import WellDoneScreen from './src/screens/WellDoneScreen';
+import QuitScreen from './src/screens/QuitScreen';
+import RestartScreen from './src/screens/RestartScreen';
+import FireworksAnimation from './src/screens/FireworksAnimation';
+import Leaderboard from './src/screens/Leaderboard';
+import EndlessLeaderboard from './src/screens/EndlessLeaderboard';
+import Store from './src/screens/Store';
+import Dashboard from './src/screens/Dashboard';
+import EmailVerification from './src/screens/EmailVerification';
+import OnBoarding from './src/screens/OnBoarding';
+import Splash from './src/screens/Splash';
+import GuessTheSign from './src/screens/GuessTheSign';
+import ChangeDifficultyScreen from './src/screens/ChangeDifficultyScreen';
+import LastScreen from './src/screens/LastScreen';
+import MathPuzzleScreen from './src/screens/MathPuzzleScreen';
+import DataScreen from './src/screens/DataScreen';
+import StateData from './src/screens/StateData';
+import Lobby from './src/screens/Lobby';
+import MultiPlayerGame from './src/screens/MultiPlayerGame';
+import { Socket } from './src/context/Socket';
+import CommingSoon from './src/screens/CommingSoon';
+import ForgetPassword from './src/screens/ForgetPassword';
+import Login from './src/screens/Login';
+import More from './src/screens/More';
+import AddUserScreen from './src/screens/AddUserScreen';
+import { AuthProvider } from './src/context/AuthProvider';
+import FriendRequestScreen from './src/screens/FriendRequestScreen';
 import Toast from 'react-native-toast-message';
-import Notification from './Component/Screens/Notification';
-import {navigationRef} from './Component/Globalfile/navigationRef';
-import ProfileScreen from './Component/Screens/ProfileScreen';
-import {ThemeProvider} from './Component/Globalfile/ThemeContext';
-import ThemeSelectorScreen from './Component/Screens/ThemeSelectorScreen';
-import {KeyboardProvider} from './Component/Globalfile/KeyboardContext';
-import LanguageSelectionScreen from './Component/Screens/LanguageSelectionScreen';
-import {I18nextProvider} from 'react-i18next';
-import i18n from './Component/Globalfile/localization/i18n';
-import LanguageConfirmationScreen from './Component/Screens/LanguageConfirmationScreen';
-import AuthLandingScreen from './Component/Screens/AuthLandingScreen';
-import NotificationPermissionScreen from './Component/Screens/NotificationPermissionScreen';
-import ChooseThemeIntroScreen from './Component/Screens/ChooseThemeIntroScreen';
-import AddFriendScreen from './Component/Screens/AddFriendScreen';
-import WelcomeScreen from './Component/Screens/WelcomeScreen';
-import TermsAndConditions from './Component/Screens/TermsAndConditions';
-import MultiplayerResultScreen from './Component/Screens/MultiplayerResultScreen';
-import SettingsScreen from './Component/Screens/SettingsScreen';
-import SoundScreen from './Component/Screens/SoundScreen';
-import GameNotifications from './Component/Screens/GameNotifications';
-import {SoundProvider} from './Context/SoundContext';
+import Notification from './src/screens/Notification';
+import { navigationRef } from './src/navigation/navigationRef';
+import ProfileScreen from './src/screens/ProfileScreen';
+import { ThemeProvider } from './src/context/ThemeContext';
+import ThemeSelectorScreen from './src/screens/ThemeSelectorScreen';
+import { KeyboardProvider } from './src/context/KeyboardContext';
+import LanguageSelectionScreen from './src/screens/LanguageSelectionScreen';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './src/utils/localization/i18n';
+import LanguageConfirmationScreen from './src/screens/LanguageConfirmationScreen';
+import AuthLandingScreen from './src/screens/AuthLandingScreen';
+import NotificationPermissionScreen from './src/screens/NotificationPermissionScreen';
+import ChooseThemeIntroScreen from './src/screens/ChooseThemeIntroScreen';
+import AddFriendScreen from './src/screens/AddFriendScreen';
+import WelcomeScreen from './src/screens/WelcomeScreen';
+import TermsAndConditions from './src/screens/TermsAndConditions';
+import MultiplayerResultScreen from './src/screens/MultiplayerResultScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import SoundScreen from './src/screens/SoundScreen';
+import GameNotifications from './src/screens/GameNotifications';
+import { SoundProvider } from './src/context/SoundContext';
 import i18next from 'i18next';
-import UpdateProfile from './Component/Screens/UpdateProfile';
-import UserProfile from './Component/Screens/UserProfile';
-import SelectOpponent from './Component/Screens/SelectOppoent';
-import GameChallengeScreen from './Component/Screens/ChallengeScreen';
-import ChallengeFriends from './Component/Screens/ChallengeScreen';
+import UpdateProfile from './src/screens/UpdateProfile';
+import UserProfile from './src/screens/UserProfile';
+import SelectOpponent from './src/screens/SelectOpponent';
+import GameChallengeScreen from './src/screens/ChallengeScreen';
+import ChallengeFriends from './src/screens/ChallengeScreen';
+import WaitingForOpponent from './src/screens/WaitingForOpponent';
 
 const Stack = createNativeStackNavigator();
 
@@ -125,7 +125,7 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <I18nextProvider i18n={i18next}>
           <ThemeProvider>
             <KeyboardProvider>
@@ -134,25 +134,7 @@ const App = () => {
                   <Notification />
                   <SoundProvider>
                     <NavigationContainer ref={navigationRef}>
-                      <Stack.Navigator
-                        screenOptions={{
-                          headerShown: false,
-                          animationEnabled: true,
-                          cardStyleInterpolator: ({current, layouts}) => {
-                            return {
-                              cardStyle: {
-                                transform: [
-                                  {
-                                    translateX: current.progress.interpolate({
-                                      inputRange: [0, 1],
-                                      outputRange: [layouts.screen.width, 0],
-                                    }),
-                                  },
-                                ],
-                              },
-                            };
-                          },
-                        }}>
+                      <Stack.Navigator screenOptions={{ headerShown: false }}>
                         <Stack.Screen name="Splash" component={Splash} />
                         <Stack.Screen
                           name="OnBoarding"
@@ -278,11 +260,11 @@ const App = () => {
                           name="ChallengeFriends"
                           component={ChallengeFriends}
                         />
-                        <Stack.Screen name="Lobby" component={Lobby} />
                         <Stack.Screen
                           name="WaitingForOpponent"
                           component={WaitingForOpponent}
                         />
+                        <Stack.Screen name="Lobby" component={Lobby} />
                         <Stack.Screen
                           name="MultiPlayerGame"
                           component={MultiPlayerGame}
